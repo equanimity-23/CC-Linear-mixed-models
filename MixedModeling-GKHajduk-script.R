@@ -44,9 +44,9 @@ summary(basic.lm)
 
 library(ggplot2)
 
-ggplot(dragons, aes(x = bodyLength, y = testScore)) +
+(prelim_plot <- ggplot(dragons, aes(x = bodyLength, y = testScore)) +
   geom_point()+
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm"))
 
 
 ### Assumptions?
@@ -104,7 +104,8 @@ summary(mountain.lm)
 
 
 ###----- Mixed effects models -----###
-
+install.packages("lme4")
+library(lme4)
 
 
 ##----- First mixed model -----##
