@@ -23,9 +23,9 @@ head(dragons)
 
 hist(dragons$testScore)  # seems close to normal distribution - good!
 
-## It is good practice to  standardise your explanatory variables before proceeding - you can use scale() to do that:
+## It is good practice to standardise your explanatory variables before proceeding - you can use scale() to do that:
 
-dragons$bodyLength2 <- scale(dragons$bodyLength)
+dragons$bodyLength2 <- scale(dragons$bodyLength, center = TRUE, scale = TRUE)
 
 ## Back to our question: is test score affected by body length?
 
