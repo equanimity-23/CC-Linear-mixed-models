@@ -111,13 +111,18 @@ library(lme4)
 ##----- First mixed model -----##
 
 ### model
+mixed.lmer <- lmer(testScore ~ bodyLength2 + (1|mountainRange), data = dragons)
+summary(mixed.lmer)
 
 ### plots
+plot(mixed.lmer)
+qqnorm(resid(mixed.lmer))
+qqline(resid(mixed.lmer))
 
 ### summary
 
 ### variance accounted for by mountain ranges
-
+(339.7/(339.7 + 223.8)) * 100
 
 
 ##-- implicit vs explicit nesting --##
@@ -126,7 +131,7 @@ head(dragons)  # we have site and mountainRange
 str(dragons)  # we took samples from three sites per mountain range and eight mountain ranges in total
 
 ### create new "sample" variable
-
+dragons <- within(dragons, sample <- factor(mountainRange:site))
 
 ##----- Second mixed model -----##
 
